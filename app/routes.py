@@ -980,3 +980,601 @@ def wi_Test_bowlers():
                     </section>
                         </body>
                             </html>''')
+
+@app.route('/test/indian-bowling/graph')
+def indtb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/INDIA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Indian Bowlers")
+    return render_template('graph2.html', chart=chart)
+
+
+@app.route('/test/afg-bowling/graph')
+def afgtb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/AFG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Afghanistan Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+@app.route('/test/aus-bowling/graph')
+def austb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/AUS.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Australia Bowlers")
+    return render_template('graph2.html', chart=chart)
+
+@app.route('/test/bdesh-bowling/graph')
+def bdeshtb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/BDESH.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Bangladesh Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/eng-bowling/graph')
+def engtb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/ENG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="England Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/ire-bowling/graph')
+def iretb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/IRE.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="IRELAND Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+ 
+@app.route('/test/nz-bowling/graph')
+def nztb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/NZ.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="New-Zealand Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/pak-bowling/graph')
+def paktb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/PAK.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Pakistan Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/sa-bowling/graph')
+def satb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/SA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="South Africa Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/sl-bowling/graph')
+def sltb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/SL.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Sri Lanka Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/wi-bowling/graph')
+def witb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/WI.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="West Indies Bowlers")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/test/zim-bowling/graph')
+def zimtb_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/testbowlers/ZIM.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Zimbawe Bowlers")
+    return render_template('graph2.html', chart=chart)
+
+@app.route('/t20/zim-bowling/stats')
+def zim_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/ZIM.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/afg-bowling/stats')
+def afg_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/AFG.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/aus-bowling/stats')
+def aus_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/AUS.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/bdesh-bowling/stats')
+def bdesh_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/BDESH.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/eng-bowling/stats')
+def eng_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/ENG.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+
+@app.route('/t20/indian-bowling/stats')
+def india_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/INDIA.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/ire-bowling/stats')
+def ire_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/IRE.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/nz-bowling/stats')
+def nz_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/NZ.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+                        
+
+@app.route('/t20/pak-bowling/stats')
+def pak_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/PAK.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/sa-bowling/stats')
+def sa_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/SA.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/t20/sl-bowling/stats')
+def sl_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/SL.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+                    
+
+@app.route('/t20/wi-bowling/stats')
+def wi_t20_bowlers():
+    df1 = pd.read_excel("app/data/t20bowlers/WI.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/t20bowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/T20/indian-bowling/graph')
+def indtt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/INDIA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Indian Batsmen")
+    return render_template('graph2.html', chart=chart)
+
+
+@app.route('/T20/afg-bowling/graph')
+def afgtt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/AFG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Afghanistan Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+@app.route('/T20/aus-bowling/graph')
+def austt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/AUS.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Australia Batsmen")
+    return render_template('graph2.html', chart=chart)
+
+@app.route('/T20/bdesh-bowling/graph')
+def bdeshtt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/BDESH.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Bangladesh Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/eng-bowling/graph')
+def engtt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/ENG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="England Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/ire-bowling/graph')
+def irett_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/IRE.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="IRELAND Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+ 
+@app.route('/T20/nz-bowling/graph')
+def nztt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/NZ.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="New-Zealand Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/pak-bowling/graph')
+def paktt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/PAK.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Pakistan Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/sa-bowling/graph')
+def satt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/SA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="South Africa Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/sl-bowling/graph')
+def sltt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/SL.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Sri Lanka Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/wi-bowling/graph')
+def witt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/WI.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="West Indies Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/T20/zim-bowling/graph')
+def zimtt_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/t20bowlers/ZIM.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Zimbawe Batsmen")
+    return render_template('graph2.html', chart=chart)
+
+@app.route('/odi/zim-bowling/stats')
+def zim_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/ZIM.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/afg-bowling/stats')
+def afg_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/AFG.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/aus-bowling/stats')
+def aus_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/AUS.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/bdesh-bowling/stats')
+def bdesh_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/BDESH.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/eng-bowling/stats')
+def eng_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/ENG.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+
+@app.route('/odi/indian-bowling/stats')
+def india_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/INDIA.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/ire-bowling/stats')
+def ire_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/IRE.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/nz-bowling/stats')
+def nz_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/NZ.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+                        
+
+@app.route('/odi/pak-bowling/stats')
+def pak_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/PAK.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/sa-bowling/stats')
+def sa_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/SA.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+@app.route('/odi/sl-bowling/stats')
+def sl_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/SL.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+                    
+
+@app.route('/odi/wi-bowling/stats')
+def wi_odi_bowlers():
+    df1 = pd.read_excel("app/data/odibowlers/WI.xls",sep="\t",index_col=[0])
+    df1.dropna(inplace=True)
+    table1 = df1.to_html(header=False,index=False,border=0)
+    with open("app/templates/odibowlers.html","r") as ht1:
+        ht11 = ht1.read()
+    return(ht11+table1+
+            ''' </div>
+                    </section>
+                        </body>
+                            </html>''')
+
+
+@app.route('/odi/indian-bowling/graph')
+def indto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/INDIA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Indian Batsmen")
+    return render_template('graph2.html', chart=chart)
+
+
+@app.route('/odi/afg-bowling/graph')
+def afgto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/AFG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Afghanistan Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+@app.route('/odi/aus-bowling/graph')
+def austo_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/AUS.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Australia Batsmen")
+    return render_template('graph2.html', chart=chart)
+
+@app.route('/odi/bdesh-bowling/graph')
+def bdeshto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/BDESH.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Bangladesh Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/eng-bowling/graph')
+def engto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/ENG.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="England Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/ire-bowling/graph')
+def ireto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/IRE.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="IRELAND Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+ 
+@app.route('/odi/nz-bowling/graph')
+def nzto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/NZ.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="New-Zealand Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/pak-bowling/graph')
+def pakto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/PAK.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Pakistan Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/sa-bowling/graph')
+def sato_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/SA.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="South Africa Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/sl-bowling/graph')
+def slto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/SL.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Sri Lanka Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/wi-bowling/graph')
+def wito_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/WI.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="West Indies Batsmen")
+    return render_template('graph2.html', chart=chart)
+ 
+
+@app.route('/odi/zim-bowling/graph')
+def zimto_graph(chartID = 'chart_ID', chart_type = 'column', chart_height = 800):
+    df1 = pd.read_excel("app/data/odibowlers/ZIM.xls",sep="\t",index_col=[1])
+    df1.dropna(inplace=True)
+    chart = serialize(df1, render_to='my-chart', output_type='json',kind="line",title="Zimbawe Batsmen")
+    return render_template('graph2.html', chart=chart)
